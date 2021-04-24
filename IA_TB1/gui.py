@@ -1,23 +1,26 @@
 from tkinter import *
+from Work_Break import *
 
 root = Tk()
-root.title("Simple Calculator")
+root.title("Separación de palabras")
+
+root.geometry("1000x400")
 
 e = Entry(root, width=35 , borderwidth=5)
 e.pack()
 
-def function(x):
-    return pow(x, 2)
+
+dic = {'Jonathan', 'Villegas', 'Oscar', 'Burga', 'Marcelo', 'Martinez',
+       'Inteligencia', 'Artificial', 'VillegasOscar', 'celoMar'}
 
 def myClick():
-    current = int(e.get())
-    t = function(current)
-    u = str(t)
-    myLabel = Label(root, text=u)
+    g = GeneticWordBreak(e.get(), dic).solve()
+    myLabel = Label(root, text=g)
     myLabel.pack()
 
 
-myButton = Button(root, text="Here to do the function", command=myClick)
+myButton = Button(root, text="Here to do the function")
+myButton['command'] = myClick
 myButton.pack()
 
 
